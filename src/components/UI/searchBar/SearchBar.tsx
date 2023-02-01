@@ -1,21 +1,22 @@
 import React, { Component, FormEvent, MouseEvent } from 'react';
+import { ResetButton } from '../buttons/ResetButton/ResetButton';
+import MyInput from '../input/MyInput';
 import classes from './SearchBar.module.css';
 
 interface ISearch {
   query: string;
 }
 
-interface IState {
-  query: string;
+interface ISearchState extends ISearch {
   buttonVisibility: 'hidden' | 'visible';
 }
 
-interface IProps {
+interface ISearchProps {
   setSearch: (searchState: ISearch) => void;
 }
 
-class SearchBar extends Component<IProps, IState> {
-  constructor(props: IProps) {
+class SearchBar extends Component<ISearchProps, ISearchState> {
+  constructor(props: ISearchProps) {
     super(props);
     this.state = { query: '', buttonVisibility: 'hidden' };
   }
@@ -34,29 +35,27 @@ class SearchBar extends Component<IProps, IState> {
     this.props.setSearch(this.state);
   };
 
-  resetSerch(): void {
-    this.setState({ query: '' });
+  resetSerch = (): void => {
+    this.setState({ query: '', buttonVisibility: 'hidden' });
     this.props.setSearch({ query: '' });
-  }
+  };
 
   render() {
     return (
       <div className={classes.SearchBar}>
         <form className={classes.SearchForm} onSubmit={this.handleSubmit}>
-          <input
-            className={classes.SearchInput}
-            type="text"
+          <MyInput
             onChange={this.onInputChange}
+            type="text"
             placeholder="Search..."
             value={this.state.query}
           />
           <input className={classes.SearchButton} type="submit" />
         </form>
-        <button
-          className={classes.ResetButton}
+        <ResetButton
           style={{ visibility: this.state.buttonVisibility }}
           onClick={this.resetSerch.bind(this)}
-        ></button>
+        />
       </div>
     );
   }

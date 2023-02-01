@@ -21,10 +21,6 @@
   color: #000;
 }
 
-.SearchInput:focus {
-  /* color: #00b4cc; */
-}
-
 .SearchButton {
   width: 70px;
   height: 100%;
