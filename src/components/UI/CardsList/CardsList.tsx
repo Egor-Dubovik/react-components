@@ -30,8 +30,6 @@ class CardsList extends Component<ICardsListProps, ICardsListState> {
   }
 
   render() {
-    console.log(this.props.searchQuery);
-
     return (
       <>
         <ul className={classes.CardsList}>

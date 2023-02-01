@@ -1,37 +1,26 @@
 import React, { Component } from 'react';
+import { ISearchProps } from 'types/search';
 import ButtonSwitchMenu from '../buttons/buttonSwitchMenu/ButtonSwitchMenu';
 import Navbar from '../navbar/Navbar';
 import SearchBar from '../searchBar/SearchBar';
+import classes from './Header.module.css';
 
-interface IState {
-  count: number;
-}
-
-interface ISearch {
-  query: string; //"(query: string) => void"
-}
-
-interface IProps {
-  setSearch: (searchState: ISearch) => void;
-}
-
-class Header extends Component<IProps, IState> {
-  constructor(props: IProps) {
+class Header extends Component<ISearchProps> {
+  constructor(props: ISearchProps) {
     super(props);
-    this.state = { count: 0 };
   }
 
   render() {
     return (
       <>
-        <header className="header">
-          <div className="header__container">
-            <div className="header__logo logo">logo</div>
-            <div className="header__menu menu">
+        <header className={classes.Header}>
+          <div className={classes.Header__container}>
+            <div className={classes.Logo}>RS SChool</div>
+            <div className={classes.Menu}>
               <Navbar />
-              <SearchBar setSearch={this.props.setSearch} />
               <ButtonSwitchMenu />
             </div>
+            <SearchBar setSearch={this.props.setSearch} />
           </div>
         </header>
       </>

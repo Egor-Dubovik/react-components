@@ -1,0 +1,22 @@
+.Header {
+  padding: 20px 0;
+}
+
+.Header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header__container div:not(:last-child) {
+  margin-right: 20px;
+}
+
+.Logo {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.Menu {
+  display: flex;
+}
