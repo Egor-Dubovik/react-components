@@ -1,19 +1,8 @@
-import React, { Component, FormEvent, MouseEvent } from 'react';
+import React, { Component, FormEvent } from 'react';
+import { ISearchProps, ISearchState } from 'types/search';
 import { ResetButton } from '../buttons/ResetButton/ResetButton';
 import MyInput from '../input/MyInput';
 import classes from './SearchBar.module.css';
-
-interface ISearch {
-  query: string;
-}
-
-interface ISearchState extends ISearch {
-  buttonVisibility: 'hidden' | 'visible';
-}
-
-interface ISearchProps {
-  setSearch: (searchState: ISearch) => void;
-}
 
 class SearchBar extends Component<ISearchProps, ISearchState> {
   constructor(props: ISearchProps) {
