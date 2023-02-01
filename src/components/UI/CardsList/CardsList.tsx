@@ -3,7 +3,10 @@ import { ICardsListProps, ICardsListState, IProductCardData } from 'types/cardsL
 import classes from './CardsList.module.css';
 
 const filterProductsByString = ({ productArray, search }: ICardsListState): IProductCardData[] => {
-  return productArray.filter((product) => product.name.toLowerCase().includes(search));
+  return productArray.filter((product) => {
+    const searchQuery = `${product.brend} ${product.name}`;
+    return searchQuery.toLowerCase().includes(search.toLowerCase());
+  });
 };
 
 class CardsList extends Component<ICardsListProps, ICardsListState> {
