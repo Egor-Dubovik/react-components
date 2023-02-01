@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import style from './ButtonSwitchMenu.module.css';
+import classes from '*.css';
+
+interface IState {
+  count: number;
+}
 
 class ButtonSwitchMenu extends Component {
+  handleClick() {}
+
   render() {
     return (
-      <>
-        <button type="button" className={style.ButtonSwitchMenu}>
-          <span></span>
-        </button>
-      </>
+      <button type="button" className="classes.">
+        <span></span>
+      </button>
     );
   }
 }
