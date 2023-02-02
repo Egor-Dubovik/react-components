@@ -12,6 +12,13 @@
   transition: all 0.3s ease;
 }
 
-.Link:hover {
+.Link:hover,
+.ActiveLink:hover {
   color: #00b4cc;
+}
+
+.ActiveLink {
+  color: rgb(92, 116, 250);
+  transition: all 0.3s ease;
+  margin-right: 20px;
 }
