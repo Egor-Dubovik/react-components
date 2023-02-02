@@ -33,3 +33,9 @@
   color: #fff;
   cursor: pointer;
 }
+
+@media (max-width: 480px) {
+  .SearchBar {
+    width: 100%;
+  }
+}

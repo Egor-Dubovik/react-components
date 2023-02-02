@@ -3,7 +3,8 @@
   flex-wrap: wrap;
 }
 
-.Link:not(:last-child) {
+.Link:not(:last-child),
+.ActiveLink:not(:last-child) {
   margin-right: 20px;
 }
 
@@ -20,5 +21,4 @@
 .ActiveLink {
   color: rgb(92, 116, 250);
   transition: all 0.3s ease;
-  margin-right: 20px;
 }
