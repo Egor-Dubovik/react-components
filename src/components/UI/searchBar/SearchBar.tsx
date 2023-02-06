@@ -29,6 +29,10 @@ class SearchBar extends Component<ISearchProps, ISearchState> {
     this.props.setSearch({ query: '' });
   };
 
+  componentWillUnmount(): void {
+    console.log('componentWillUnmount');
+  }
+
   render() {
     return (
       <div className={classes.SearchBar}>
