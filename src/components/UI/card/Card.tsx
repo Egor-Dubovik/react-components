@@ -11,7 +11,7 @@ const Card: FC<ICardComponent> = ({ product }) => {
     <li className={classes.CardWraper}>
       <ul className={classes.Card}>
         <li className={classes.Image}>
-          <img src={product.name} alt="laptop image" />
+          <img src={product.src} alt="laptop image" />
         </li>
         <li className={classes.Item}>
           <h3>

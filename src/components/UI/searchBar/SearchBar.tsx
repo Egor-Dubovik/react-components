@@ -31,6 +31,7 @@ class SearchBar extends Component<ISearchProps, ISearchState> {
 
   componentWillUnmount(): void {
     console.log('componentWillUnmount');
+    localStorage.setItem('Search', this.state.query);
   }
 
   render() {

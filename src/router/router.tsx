@@ -3,7 +3,7 @@ import Header from 'components/UI/header/Header';
 import Layout from 'components/UI/layout/Layout';
 import MainPage from 'pages/mainPage';
 import React from 'react';
-import { createBrowserRouter, Outlet } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <div>about</div>,
+        element: <div>you are on the about page</div>,
       },
       {
         path: '*',

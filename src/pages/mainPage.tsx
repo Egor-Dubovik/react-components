@@ -1,33 +1,21 @@
 import React, { Component } from 'react';
 import SearchBar from 'components/UI/searchBar/SearchBar';
-import { SearchContext } from 'components/UI/layout/Layout';
 import CardsList from 'components/UI/CardsList/CardsList';
 import cardJson from '../data/products.json';
+import { ISearch, ISearchProps } from 'types/search';
 
-interface IState {
-  count: number;
-}
+class MainPage extends Component {
+  state = { query: '' };
 
-interface IProps {
-  title?: string;
-}
-
-class MainPage extends Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
+  setSearchState(searchState: ISearch): void {
+    this.setState(searchState);
   }
 
   render() {
     return (
       <>
-        <SearchContext.Consumer>
-          {({ query }) => {
-            return <CardsList products={cardJson.laptops} searchQuery={query}></CardsList>;
-          }}
-        </SearchContext.Consumer>
+        <SearchBar setSearch={this.setSearchState.bind(this)} />
+        <CardsList products={cardJson.laptops} searchQuery={this.state.query}></CardsList>
       </>
     );
   }
