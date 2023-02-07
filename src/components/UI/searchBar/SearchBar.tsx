@@ -1,5 +1,6 @@
 import React, { Component, FormEvent } from 'react';
 import { ISearchProps, ISearchState } from 'types/search';
+import { storage } from 'utils/localStorage';
 import { ResetButton } from '../buttons/ResetButton/ResetButton';
 import MyInput from '../input/MyInput';
 import classes from './SearchBar.module.css';
@@ -27,16 +28,16 @@ class SearchBar extends Component<ISearchProps, ISearchState> {
   resetSerch = (): void => {
     this.setState({ query: '', buttonVisibility: 'hidden' });
     this.props.setSearch({ query: '' });
+    storage.set('Search', this.state.query);
   };
 
   componentWillUnmount(): void {
-    console.log('componentWillUnmount');
-    localStorage.setItem('Search', this.state.query);
+    storage.set('Search', this.state.query);
   }
 
   componentDidMount(): void {
-    const query = localStorage.getItem('Search') || '';
-    this.setState({ query: '' });
+    const localQuery = storage.get('Search') || '';
+    this.setState({ query: localQuery, buttonVisibility: 'visible' });
   }
 
   render() {
