@@ -1,6 +1,7 @@
 import CardsList from 'components/UI/CardsList/CardsList';
 import Header from 'components/UI/header/Header';
 import Layout from 'components/UI/layout/Layout';
+import AboutPage from 'pages/AboutPage';
 import MainPage from 'pages/MainPage';
 import NotFoundPage from 'pages/NotFoundPage';
 import React from 'react';
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <div>you are on the about page</div>,
+        element: <AboutPage />,
       },
       {
         path: '/404',
