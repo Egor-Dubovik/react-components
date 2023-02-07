@@ -1,5 +1,6 @@
 .SearchBar {
   position: relative;
+  margin-bottom: 30px;
 }
 
 .SearchForm {
@@ -32,10 +33,4 @@
   text-align: center;
   color: #fff;
   cursor: pointer;
-}
-
-@media (max-width: 480px) {
-  .SearchBar {
-    width: 100%;
-  }
 }
