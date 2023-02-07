@@ -3,9 +3,10 @@ import SearchBar from 'components/UI/searchBar/SearchBar';
 import CardsList from 'components/UI/CardsList/CardsList';
 import cardJson from '../data/products.json';
 import { ISearch, ISearchProps } from 'types/search';
+import { storage } from 'utils/localStorage';
 
 class MainPage extends Component {
-  state = { query: '' };
+  state = { query: storage.get('Search') || '' };
 
   setSearchState(searchState: ISearch): void {
     this.setState(searchState);
