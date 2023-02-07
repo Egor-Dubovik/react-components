@@ -4,6 +4,8 @@
 }
 
 .Card {
+  display: flex;
+  flex-direction: column;
   padding: 25px 10px;
   background-color: #fafafa;
   border-radius: 10px;
@@ -20,9 +22,10 @@
 }
 
 .Image {
+  align-self: center;
   position: relative;
-  width: 100%;
-  padding-bottom: 60%;
+  width: 70%;
+  padding-bottom: 50%;
 }
 
 .Image img {

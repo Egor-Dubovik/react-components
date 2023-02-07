@@ -12,7 +12,7 @@ const Card: FC<ICardComponent> = ({ product }) => {
       <a href="#" style={{ color: 'black' }}>
         <ul className={classes.Card}>
           <li className={classes.Image}>
-            <img src={product.src} alt="laptop image" />
+            <img src={process.env.PUBLIC_URL + product.src} alt="laptop image" />
           </li>
           <li className={classes.Item}>
             <h3 style={{ fontWeight: 500 }}>
