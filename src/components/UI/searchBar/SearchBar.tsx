@@ -34,6 +34,11 @@ class SearchBar extends Component<ISearchProps, ISearchState> {
     localStorage.setItem('Search', this.state.query);
   }
 
+  componentDidMount(): void {
+    const query = localStorage.getItem('Search') || '';
+    this.setState({ query: '' });
+  }
+
   render() {
     return (
       <div className={classes.SearchBar}>

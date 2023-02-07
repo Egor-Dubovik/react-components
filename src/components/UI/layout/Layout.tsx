@@ -3,10 +3,6 @@ import { Outlet } from 'react-router-dom';
 import Header from '../header/Header';
 import classes from './Layout.module.css';
 
-const sdf = (): string | null => {
-  return localStorage.getItem('Search');
-};
-
 class Layout extends Component {
   render() {
     return (
