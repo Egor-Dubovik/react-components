@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ICardsListProps, ICardsListState, IProductCardData } from 'types/cardsList';
-import { storage } from 'utils/localStorage';
 import Card from '../../components/UI/card/Card';
 import classes from './CardsList.module.css';
 
