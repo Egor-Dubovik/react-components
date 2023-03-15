@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SearchBar from 'components/UI/searchBar/SearchBar';
-import CardsList from 'components/UI/CardsList/CardsList';
+import SearchBar from 'components/searchBar/SearchBar';
+import CardsList from 'modules/CardsList/CardsList';
 import cardJson from '../data/products.json';
 import { ISearch, ISearchProps } from 'types/search';
 import { storage } from 'utils/localStorage';

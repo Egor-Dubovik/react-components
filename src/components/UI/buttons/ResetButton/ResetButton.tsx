@@ -1,9 +1,9 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ButtonHTMLAttributes, AriaAttributes, DetailedHTMLProps } from 'react';
 import classes from './ResetButton.module.css';
 
 export interface ButtonProps
-  extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-    React.AriaAttributes {}
+  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+    AriaAttributes {}
 
 export const ResetButton: FC<ButtonProps> = ({ children, ...props }) => {
   return (
