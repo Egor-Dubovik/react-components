@@ -1,10 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
-
-import SearchBar from './SearchBar';
 import userEvent from '@testing-library/user-event';
-import MyInput from '../UI/input/MyInput';
 import MainPage from '../../pages/MainPage';
 import { storage } from 'utils/localStorage';
 

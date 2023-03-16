@@ -2,8 +2,8 @@ import React from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Layout from 'modules/layout/Layout';
 import AboutPage from 'pages/AboutPage';
-import MainPage from 'pages/MainPage';
 import NotFoundPage from 'pages/NotFoundPage';
+import MainPage from '../pages/MainPage';
 
 const router = createBrowserRouter([
   {
