@@ -3,7 +3,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Layout from 'modules/layout/Layout';
 import AboutPage from 'pages/AboutPage';
 import NotFoundPage from 'pages/NotFoundPage';
-import MainPage from '../pages/MainPage';
+import MainPage from '../pages/mainPage';
 
 const router = createBrowserRouter([
   {
