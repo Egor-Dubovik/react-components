@@ -35,7 +35,7 @@
     "fix": "eslint . --fix",
     "prettier": "prettier src/**/*.ts --write",
     "test": "react-scripts test",
-    "test:covorage": "react-scripts test --coverage",
+    "test:covorage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "browserslist": {
