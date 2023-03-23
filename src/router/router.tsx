@@ -4,25 +4,31 @@ import Layout from 'modules/layout/Layout';
 import AboutPage from 'pages/AboutPage';
 import NotFoundPage from 'pages/NotFoundPage';
 import MainPage from '../pages/mainPage';
+import FormPage from '../pages/FormPage';
+import { Routes } from '../common/constants/app';
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
       {
-        path: '/',
+        path: Routes.main,
         element: <MainPage />,
       },
       {
-        path: '/about',
+        path: Routes.about,
         element: <AboutPage />,
       },
       {
-        path: '/404',
+        path: Routes.form,
+        element: <FormPage />,
+      },
+      {
+        path: Routes.bad,
         element: <NotFoundPage />,
       },
       {
-        path: '*',
+        path: Routes.any,
         element: <Navigate to="/404" replace />,
       },
     ],
