@@ -1,117 +1,102 @@
-import React, { Component } from 'react';
+import React from 'react';
+import CustomRadio from '../../components/CustomRadio/CustomRadio';
+import CustomSelect from '../../components/CustomSelect/CustomSelect';
+import SubmitButton from '../../components/UI/buttons/SubmitButton/SubmitButton';
+import { countryArray } from '../../data/countries';
+import { checkUserForm } from '../../helpers/checkUserForm';
+import { storage } from '../../utils/localStorage';
+import classes from './Form.module.css';
 
-interface IFormState {
-  fullName: string;
-  birthday: string;
+export interface UserForm {
+  name: string;
+  birthday: Date;
   country: string;
-  consent: boolean;
+  agreement: boolean;
   gender: 'male' | 'female';
-  avatar: FileList | null;
+  avatar: File | null;
 }
 
-class Form extends Component<Record<string, never>, IFormState> {
-  state: IFormState = {
-    fullName: '',
-    birthday: '',
-    country: '',
-    consent: false,
-    gender: 'male',
-    avatar: null,
-  };
+class Form extends React.Component {
+  private nameRef = React.createRef<HTMLInputElement>();
+  private birthdayRef = React.createRef<HTMLInputElement>();
+  private countryRef = React.createRef<HTMLSelectElement>();
+  private agreementRef = React.createRef<HTMLInputElement>();
+  private genderRef = React.createRef<HTMLInputElement>();
+  private avatarRef = React.createRef<HTMLInputElement>();
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { fullName, birthday, country, consent, gender, avatar } = this.state;
+    const data: UserForm = {
+      name: this.nameRef.current!.value,
+      birthday: new Date(this.birthdayRef.current!.value),
+      country: this.countryRef.current!.value,
+      agreement: this.agreementRef.current!.checked,
+      gender: this.genderRef.current!.checked ? 'male' : 'female',
+      avatar: this.avatarRef.current!.files ? this.avatarRef.current!.files[0] : null,
+    };
 
-    // Perform validation on form fields here
+    const errorArray = checkUserForm(data);
+    if (errorArray.length !== 0) {
+      // show popap
+      console.log(errorArray);
+      return;
+    }
 
-    console.log('Submitted:', { fullName, birthday, country, consent, gender, avatar });
-  };
-
-  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value } as unknown as Pick<IFormState, keyof IFormState>);
-  };
-
-  handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value } as unknown as Pick<IFormState, keyof IFormState>);
-  };
-
-  handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = event.target;
-    this.setState({ [name]: checked } as unknown as Pick<IFormState, keyof IFormState>);
-  };
-
-  handleSwitcherChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value } as unknown as Pick<IFormState, keyof IFormState>);
-  };
-
-  handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
-    this.setState({ avatar: files });
+    const prevUsers = JSON.parse(storage.get('users')) as UserForm[];
+    if (!!prevUsers) {
+      const users = JSON.stringify([...prevUsers, data]);
+      storage.set('users', users);
+    } else {
+      storage.set('users', JSON.stringify([data]));
+    }
   };
 
   render() {
-    const { fullName, birthday, country, consent, gender, avatar } = this.state;
-
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="fullName">Full Name:</label>
-        <input type="text" name="fullName" value={fullName} onChange={this.handleInputChange} />
-
-        <label htmlFor="birthday">Birthday:</label>
-        <input type="date" name="birthday" value={birthday} onChange={this.handleInputChange} />
-
-        <label htmlFor="country">Country:</label>
-        <select id="country" name="country" value={country} onChange={this.handleSelectChange}>
-          <option value="">Choose a country</option>
-          <option value="usa">USA</option>
-          <option value="canada">Canada</option>
-          <option value="mexico">Mexico</option>
-        </select>
-
-        <label htmlFor="consent">
-          <input
-            type="checkbox"
-            name="consent"
-            checked={consent}
-            onChange={this.handleCheckboxChange}
-          />
-          I consent to my personal data
-        </label>
-
-        <label htmlFor="gender">Gender:</label>
-        <div>
-          <label>
-            <input
-              type="radio"
-              id="gender-male"
-              name="gender"
-              value="male"
-              checked={gender === 'male'}
-              onChange={this.handleSwitcherChange}
-            />
-            Male
+      <form className={classes.Form} onSubmit={this.handleSubmit}>
+        <input
+          className={classes.Input}
+          type="text"
+          ref={this.nameRef}
+          required
+          placeholder="fullname"
+        />
+        <div className={classes.Box}>
+          <label className={classes.Label} htmlFor="birthday">
+            Birthday:
           </label>
-          <label>
-            <input
-              type="radio"
-              id="gender-female"
-              name="gender"
-              value="female"
-              checked={gender === 'female'}
-              onChange={this.handleSwitcherChange}
-            />
-            Female
+          <input
+            className={classes.Input}
+            type="date"
+            id="birthday"
+            ref={this.birthdayRef}
+            required
+          />
+        </div>
+        <CustomSelect label="Country" options={countryArray} forwardedRef={this.countryRef} />
+        <CustomRadio
+          label={{ main: 'Gender', variant1: 'mail', variant2: 'femail' }}
+          forwardedRef={this.genderRef}
+        />
+        <div className={classes.Agreement}>
+          <input
+            className={classes.Checkbox}
+            type="checkbox"
+            id="agreement"
+            ref={this.agreementRef}
+            required
+          />
+          <label className={classes.AgreementLabel} htmlFor="agreement">
+            I consent to my personal data
           </label>
         </div>
-
-        <label htmlFor="avatar">Avatar:</label>
-        <input type="file" id="avatar" name="avatar" onChange={this.handleFileUpload} />
-
-        <button type="submit">Submit</button>
+        <input
+          className={classes.FileInput}
+          type="file"
+          accept=".png,.jpg,.jpeg,.svg"
+          ref={this.avatarRef}
+        />
+        <SubmitButton />
       </form>
     );
   }
