@@ -1,9 +1,10 @@
 .Form {
+  flex: 1 1 30%;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
   padding: 1.3rem;
-  background-color: #d7edff;
+  background-color: #d7e4f0;
 }
 
 .Box {
@@ -13,7 +14,7 @@
 
 .Input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
 .Label {
