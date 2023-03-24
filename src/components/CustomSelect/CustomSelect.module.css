@@ -1,0 +1,13 @@
+.Box {
+  display: flex;
+  flex-direction: column;
+}
+
+.Input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.Label {
+  margin-bottom: 0.5rem;
+}

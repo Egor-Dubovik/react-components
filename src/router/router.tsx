@@ -4,7 +4,7 @@ import Layout from 'modules/layout/Layout';
 import AboutPage from 'pages/AboutPage';
 import NotFoundPage from 'pages/NotFoundPage';
 import MainPage from '../pages/mainPage';
-import FormPage from '../pages/FormPage';
+import FormPage from '../pages/FormPage/FormPage';
 import { Routes } from '../common/constants/app';
 
 const router = createBrowserRouter([
