@@ -2,10 +2,9 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import UserItem from './UserItem';
-import FormPage from '../../pages/FormPage/FormPage';
 
-const user = {
-  name: 'tim',
+export const testUser = {
+  name: 'tim tim',
   birthday: new Date(),
   country: 'belarus',
   agreement: true,
@@ -15,8 +14,8 @@ const user = {
 
 describe('testing UserItem', () => {
   it('check render of UserItem', () => {
-    const { container } = render(<UserItem user={user} />);
-    expect(screen.getByText(/Full name: tim/i)).toBeTruthy();
+    const { container } = render(<UserItem user={testUser} />);
+    expect(screen.getByText(/Full name: tim tim/i)).toBeTruthy();
     expect(container).toBeInTheDocument();
   });
 });
