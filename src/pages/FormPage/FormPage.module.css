@@ -1,4 +1,8 @@
 .PageForm {
+  position: relative;
+}
+
+.FormBox {
   display: flex;
 }
 
@@ -14,4 +18,10 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 760px) {
+  .BoxImage {
+    display: none;
+  }
 }

@@ -1,0 +1,22 @@
+.UserItem {
+  flex: 1 1 23%;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  background-color: #d7d4ff;
+  border: 1px solid rgba(25, 0, 255, 0.151);
+  border-radius: 10px;
+}
+
+@media (max-width: 760px) {
+  .UserItem {
+    flex: 1 1 47%;
+  }
+}
+
+@media (max-width: 480px) {
+  .UserItem {
+    flex: 1 1 100%;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import CustomRadio from '../../components/CustomRadio/CustomRadio';
 import CustomSelect from '../../components/CustomSelect/CustomSelect';
 import SubmitButton from '../../components/UI/buttons/SubmitButton/SubmitButton';
@@ -16,7 +16,11 @@ export interface UserForm {
   avatar: File | null;
 }
 
-class Form extends React.Component {
+export interface IFormProps {
+  setUsers: (users: UserForm[]) => void;
+}
+
+class Form extends React.Component<IFormProps> {
   private formRef = React.createRef<HTMLFormElement>();
   private nameRef = React.createRef<HTMLInputElement>();
   private birthdayRef = React.createRef<HTMLInputElement>();
@@ -24,6 +28,10 @@ class Form extends React.Component {
   private agreementRef = React.createRef<HTMLInputElement>();
   private genderRef = React.createRef<HTMLInputElement>();
   private avatarRef = React.createRef<HTMLInputElement>();
+
+  constructor(props: IFormProps) {
+    super(props);
+  }
 
   handleFormErrors = (data: UserForm): boolean => {
     const errorArray = checkUserForm(data);
@@ -39,6 +47,7 @@ class Form extends React.Component {
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const data: UserForm = {
       name: this.nameRef.current!.value,
       birthday: new Date(this.birthdayRef.current!.value),
@@ -53,12 +62,16 @@ class Form extends React.Component {
 
     const prevUsers = JSON.parse(storage.get('users')) as UserForm[];
     this.formRef.current?.reset();
+    alert(`Data was saved!`);
+
     if (!!prevUsers) {
-      const users = JSON.stringify([...prevUsers, data]);
-      storage.set('users', users);
+      const users = [...prevUsers, data];
+      storage.set('users', JSON.stringify(users));
+      this.props.setUsers(users);
       return;
     }
     storage.set('users', JSON.stringify([data]));
+    this.props.setUsers([data]);
   };
 
   render() {
@@ -92,6 +105,7 @@ class Form extends React.Component {
           type="file"
           accept=".png,.jpg,.jpeg,.svg"
           ref={this.avatarRef}
+          required
         />
         <SubmitButton />
       </form>

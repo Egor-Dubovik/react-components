@@ -1,26 +1,39 @@
 import React, { Component } from 'react';
-import Form from '../../modules/Form/Form';
-
+import UserList from '../../modules/UserList/UserList';
+import Form, { UserForm } from '../../modules/Form/Form';
 import classes from './FormPage.module.css';
+import { storage } from '../../utils/localStorage';
 
 interface IState {
-  count: number;
+  users: UserForm[];
 }
 
 class FormPage extends Component<Record<string, never>, IState> {
-  state = { count: 0 };
+  state = { users: [] as UserForm[] };
+
+  setUserList(users: UserForm[]): void {
+    this.setState({ users });
+  }
+
+  componentDidMount = (): void => {
+    const users = JSON.parse(storage.get('users')) as UserForm[];
+    this.setState({ users });
+  };
 
   render() {
     return (
       <div className={classes.PageForm}>
-        <div className={classes.BoxImage}>
-          <img
-            className={classes.Image}
-            src="https://source.unsplash.com/random"
-            alt="random image"
-          />
+        <div className={classes.FormBox}>
+          <div className={classes.BoxImage}>
+            <img
+              className={classes.Image}
+              src="https://source.unsplash.com/random"
+              alt="random image"
+            />
+          </div>
+          <Form setUsers={this.setUserList.bind(this)} />
         </div>
-        <Form />
+        <UserList users={this.state.users} />
       </div>
     );
   }
