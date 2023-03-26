@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import CustomRadio from '../../components/CustomRadio/CustomRadio';
 import CustomSelect from '../../components/CustomSelect/CustomSelect';
 import SubmitButton from '../../components/UI/buttons/SubmitButton/SubmitButton';
@@ -17,12 +17,25 @@ export interface UserForm {
 }
 
 class Form extends React.Component {
+  private formRef = React.createRef<HTMLFormElement>();
   private nameRef = React.createRef<HTMLInputElement>();
   private birthdayRef = React.createRef<HTMLInputElement>();
   private countryRef = React.createRef<HTMLSelectElement>();
   private agreementRef = React.createRef<HTMLInputElement>();
   private genderRef = React.createRef<HTMLInputElement>();
   private avatarRef = React.createRef<HTMLInputElement>();
+
+  handleFormErrors = (data: UserForm): boolean => {
+    const errorArray = checkUserForm(data);
+    if (errorArray.length !== 0) {
+      const errNessage = errorArray.reduce((acc, err, index) => {
+        return acc + `${index + 1}. ${err}\n`;
+      }, '');
+      alert(`To submit the form correct the following errors:\n${errNessage}`);
+      return true;
+    }
+    return false;
+  };
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,43 +48,28 @@ class Form extends React.Component {
       avatar: this.avatarRef.current!.files ? this.avatarRef.current!.files[0] : null,
     };
 
-    const errorArray = checkUserForm(data);
-    if (errorArray.length !== 0) {
-      // show popap
-      console.log(errorArray);
-      return;
-    }
+    const isFormError = this.handleFormErrors(data);
+    if (isFormError) return;
 
     const prevUsers = JSON.parse(storage.get('users')) as UserForm[];
+    this.formRef.current?.reset();
     if (!!prevUsers) {
       const users = JSON.stringify([...prevUsers, data]);
       storage.set('users', users);
-    } else {
-      storage.set('users', JSON.stringify([data]));
+      return;
     }
+    storage.set('users', JSON.stringify([data]));
   };
 
   render() {
     return (
-      <form className={classes.Form} onSubmit={this.handleSubmit}>
-        <input
-          className={classes.Input}
-          type="text"
-          ref={this.nameRef}
-          required
-          placeholder="fullname"
-        />
+      <form className={classes.Form} onSubmit={this.handleSubmit} ref={this.formRef}>
+        <input className={classes.Input} type="text" ref={this.nameRef} placeholder="fullname" />
         <div className={classes.Box}>
           <label className={classes.Label} htmlFor="birthday">
             Birthday:
           </label>
-          <input
-            className={classes.Input}
-            type="date"
-            id="birthday"
-            ref={this.birthdayRef}
-            required
-          />
+          <input className={classes.Input} type="date" id="birthday" ref={this.birthdayRef} />
         </div>
         <CustomSelect label="Country" options={countryArray} forwardedRef={this.countryRef} />
         <CustomRadio
@@ -84,7 +82,6 @@ class Form extends React.Component {
             type="checkbox"
             id="agreement"
             ref={this.agreementRef}
-            required
           />
           <label className={classes.AgreementLabel} htmlFor="agreement">
             I consent to my personal data
