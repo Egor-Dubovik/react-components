@@ -32,7 +32,7 @@
       "name": "Swift 7",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/acer/swift_7.png",
+      "src": "./assets/laptops/acer/swift_7.png",
       "details": [
         "Intel Core i7-8500Y  2600 MHz",
         "Intel UHD Graphics 615",
@@ -53,7 +53,7 @@
       "name": "Swift 3",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/acer/swift-3.png",
+      "src": "./assets/laptops/acer/swift-3.png",
       "details": [
         "Intel Core i4 1135G7 2400 MHz",
         "Intel Iris Xe Max 4 GB",
@@ -74,7 +74,7 @@
       "name": "Swift X SFX16 52G",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/acer/swift-x-sfx16-52g.png",
+      "src": "./assets/laptops/acer/swift-x-sfx16-52g.png",
       "details": [
         "Intel Core i5 SFX16 2400 MHz",
         "Intel Iris Max 6 GB",
@@ -95,7 +95,7 @@
       "name": "Spin 7",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/acer/spin-7.png",
+      "src": "./assets/laptops/acer/spin-7.png",
       "details": [
         "Intel Core i7-7Y75 3600 MHz",
         "Intel UHD Graphics 615",
@@ -116,7 +116,7 @@
       "name": "Macbook Pro 14",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/apple/Macbook-Air-13.jpeg",
+      "src": "./assets/laptops/apple/Macbook-Air-13.jpeg",
       "details": [
         "Apple M1 Pro",
         "video card built-in",
@@ -137,7 +137,7 @@
       "name": "Macbook Pro 16",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/apple/Macbook-Air-16.jpeg",
+      "src": "./assets/laptops/apple/Macbook-Air-16.jpeg",
       "details": [
         "Apple M1 Pro (10)",
         "video card built-in",
@@ -158,7 +158,7 @@
       "name": "Macbook Air 13",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/apple/Macbook-Pro-14.jpeg",
+      "src": "./assets/laptops/apple/Macbook-Pro-14.jpeg",
       "details": [
         "Apple M1 Pro 3200 MHz",
         "video card built-in",
@@ -179,7 +179,7 @@
       "name": "ASUS ROG Strix G15",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/asus/ASUS-ROG.jpeg",
+      "src": "./assets/laptops/asus/ASUS-ROG.jpeg",
       "details": [
         "AMD Ryzen 7 4800H 2900 MHz",
         "video card built-in",
@@ -201,7 +201,7 @@
       "name": "ASUS TUF Gaming Dash",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/asus/Gaming-Dash.jpeg",
+      "src": "./assets/laptops/asus/Gaming-Dash.jpeg",
       "details": [
         "Intel Core i7 11370H 3300 MHz",
         "NVIDIA GeForce RTX 3060",
@@ -223,7 +223,7 @@
       "name": "ASUS VivoBook 14",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/asus/VivoBook.jpeg",
+      "src": "./assets/laptops/asus/VivoBook.jpeg",
       "details": [
         "Intel Core i5 1135G7 2400 MHz",
         "video card built-in",
@@ -245,7 +245,7 @@
       "name": "Lenovo IdeaPad Gaming 3",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/lenovo/IdeaPad.jpeg",
+      "src": "./assets/laptops/lenovo/IdeaPad.jpeg",
       "details": [
         "AMD Ryzen 7 5800H 3200 MHz",
         "NVIDIA GeForce RTX 3050 Ti 4 GB",
@@ -267,7 +267,7 @@
       "name": "Lenovo Legion 5 Pro",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/lenovo/Legion.jpeg",
+      "src": "./assets/laptops/lenovo/Legion.jpeg",
       "details": [
         "AMD Ryzen 5 5600H 3300 MHz",
         "NVIDIA GeForce RTX 3050 Ti 4 GB",
@@ -289,7 +289,7 @@
       "name": "Lenovo IdeaPad 5 Pro",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/lenovo/IdeaPad-5.jpeg",
+      "src": "./assets/laptops/lenovo/IdeaPad-5.jpeg",
       "details": [
         "AMD Ryzen 5 5600H 2300 MHz",
         "video card built-in",
@@ -311,7 +311,7 @@
       "name": "Dell XPS 15 9520",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/dell/XPS-15.jpeg",
+      "src": "./assets/laptops/dell/XPS-15.jpeg",
       "details": [
         "Intel Core i7 12700H 3500 MHz",
         "NVIDIA GeForce RTX 3050 4",
@@ -333,7 +333,7 @@
       "name": "Dell Vostro 15",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/dell/Vostro-15.jpeg",
+      "src": "./assets/laptops/dell/Vostro-15.jpeg",
       "details": [
         "AMD Ryzen 3 3250U 2600 MHz",
         "video card built-in",
@@ -355,7 +355,7 @@
       "name": "Dell Latitude 14",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/dell/Vostro-15.jpeg",
+      "src": "./assets/laptops/dell/Vostro-15.jpeg",
       "details": [
         "Intel Core i3 8145U 2100 MHz",
         "video card built-in",
@@ -377,7 +377,7 @@
       "name": "Dell Alienware x15",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/dell/Alienware.jpeg",
+      "src": "./assets/laptops/dell/Alienware.jpeg",
       "details": [
         "Intel Core i3 8145U 2100 MHz",
         "video card built-in",
@@ -399,7 +399,7 @@
       "name": "HP Victus 16",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/hp/Victus.jpeg",
+      "src": "./assets/laptops/hp/Victus.jpeg",
       "details": [
         "AMD Ryzen 5 5600H 3300 MHz",
         "NVIDIA GeForce RTX 3050 Ti 4",
@@ -421,7 +421,7 @@
       "name": "HP ProBook 455",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/hp/ProBook.jpeg",
+      "src": "./assets/laptops/hp/ProBook.jpeg",
       "details": [
         "AMD Ryzen 3 5400H 3300 MHz",
         "NVIDIA GeForce RTX 3050 Ti 4",
@@ -443,7 +443,7 @@
       "name": "MSI Thin GF63",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/msi/GF63.jpeg",
+      "src": "./assets/laptops/msi/GF63.jpeg",
       "details": [
         "Intel Core i5 11400H 2700 MHz",
         "NVIDIA GeForce RTX 3050 Ti 4",
@@ -465,7 +465,7 @@
       "name": "MSI Raider GE76",
       "popular": false,
       "favorite": false,
-      "src": "assets/laptops/msi/Raider.jpeg",
+      "src": "./assets/laptops/msi/Raider.jpeg",
       "details": [
         "Intel Core i9 12900HK 3800 MHz",
         "NVIDIA GeForce RTX 3070 Ti 4",
@@ -487,7 +487,7 @@
       "name": "Gigabyte G5",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/gigabyte/G5.jpeg",
+      "src": "./assets/laptops/gigabyte/G5.jpeg",
       "details": [
         "Intel Core i5 11400H 2700 MHz",
         "NVIDIA GeForce RTX 3060 Ti 4",
@@ -509,7 +509,7 @@
       "name": "Gigabyte Aero 15",
       "popular": true,
       "favorite": false,
-      "src": "assets/laptops/gigabyte/Aero-15.jpeg",
+      "src": "./assets/laptops/gigabyte/Aero-15.jpeg",
       "details": [
         "Intel Core i7 11800H 2300 MHz",
         "NVIDIA GeForce RTX 3080 8",
