@@ -12,7 +12,7 @@ class SubmitButton extends Component<ISubmitButtonProps, Record<string, never>> 
 
   render() {
     return (
-      <button className={classes.Button} type="submit">
+      <button className={classes.Button} type="submit" name="submit">
         {this.props.text ? this.props.text : 'Submit'}
       </button>
     );

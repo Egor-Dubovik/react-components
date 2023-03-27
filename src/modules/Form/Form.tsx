@@ -96,17 +96,23 @@ class Form extends React.Component<IFormProps> {
             id="agreement"
             ref={this.agreementRef}
           />
-          <label className={classes.AgreementLabel} htmlFor="agreement">
+          <label
+            className={classes.AgreementLabel}
+            htmlFor="agreement"
+            data-testid="input-checkbox"
+          >
             I consent to my personal data
           </label>
         </div>
         <input
           className={classes.FileInput}
+          data-testid="file"
           type="file"
           accept=".png,.jpg,.jpeg,.svg"
           ref={this.avatarRef}
           required
         />
+
         <SubmitButton />
       </form>
     );
