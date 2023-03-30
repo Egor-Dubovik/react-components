@@ -1,38 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useController, Control } from 'react-hook-form';
+import { UserForm } from '../../modules/Form/Form';
 import classes from './CustomSelect.module.css';
 
 interface ChildProps {
-  forwardedRef: React.Ref<HTMLSelectElement>;
-  label: string;
+  name: 'name' | 'birthday' | 'country' | 'agreement' | 'gender' | 'avatar';
   options: { value: string; name: string; id: number }[];
+  control: Control<UserForm>;
 }
 
-class CustomSelect extends Component<ChildProps> {
-  constructor(props: ChildProps) {
-    super(props);
-  }
+const CustomSelect = ({ name, options, control }: ChildProps) => {
+  const {
+    field: { onChange, value },
+    fieldState: { error },
+  } = useController({ name, control });
 
-  render() {
-    return (
-      <div className={classes.Box}>
-        <label className={classes.Label} htmlFor={this.props.label}>
-          {this.props.label}:
-        </label>
-        <select
-          className={classes.Input}
-          id={this.props.label}
-          ref={this.props.forwardedRef}
-          required
-        >
-          {this.props.options.map((option) => (
-            <option key={option.id} value={option.value}>
-              {option.name}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes.Box}>
+      <label className={classes.Label} htmlFor={name}>
+        {name}:
+      </label>
+      <select className={classes.Input} id={name} onChange={onChange} value={value as string}>
+        {options.map((option) => (
+          <option key={option.id} value={option.value}>
+            {option.name}
+          </option>
+        ))}
+      </select>
+      {error && <p>{error.message}</p>}
+    </div>
+  );
+};
 
 export default CustomSelect;
