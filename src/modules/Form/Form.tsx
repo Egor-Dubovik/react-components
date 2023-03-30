@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
-// import CustomRadio from '../../components/CustomRadio/CustomRadio';
+import CustomRadio from '../../components/CustomRadio/CustomRadio';
 import CustomSelect from '../../components/CustomSelect/CustomSelect';
 import SubmitButton from '../../components/UI/buttons/SubmitButton/SubmitButton';
 import { countryArray } from '../../data/countries';
@@ -25,16 +25,17 @@ const Form: FC<IFormProps> = ({ setUsers }) => {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<UserForm>();
 
   const onSubmit = (data: UserForm) => {
     console.log(data);
     const prevUsers = JSON.parse(storage.get('users')) as UserForm[];
-    alert(`Data was saved!`);
     const users = prevUsers ? [...prevUsers, data] : [data];
     storage.set('users', JSON.stringify(users));
     setUsers(users);
+    reset();
   };
 
   return (
@@ -62,10 +63,11 @@ const Form: FC<IFormProps> = ({ setUsers }) => {
 
       <CustomSelect name="country" options={countryArray} control={control} />
 
-      {/* <CustomRadio
-        label={{ main: 'Gender', variant1: 'mail', variant2: 'femail' }}
-        forwardedRef={register('gender')}
-      /> */}
+      <CustomRadio
+        label={{ main: 'Gender', variant1: 'male', variant2: 'female' }}
+        register={register}
+      />
+      {errors.gender && <p style={{ color: 'red' }}>{errors.gender.message}</p>}
 
       <div className={classes.Agreement}>
         <input

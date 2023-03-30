@@ -13,7 +13,7 @@ const CustomSelect = ({ name, options, control }: ChildProps) => {
   const {
     field: { onChange, value },
     fieldState: { error },
-  } = useController({ name, control });
+  } = useController({ name, control, rules: { required: 'Coose a country' } });
 
   return (
     <div className={classes.Box}>
@@ -27,7 +27,7 @@ const CustomSelect = ({ name, options, control }: ChildProps) => {
           </option>
         ))}
       </select>
-      {error && <p>{error.message}</p>}
+      {error && <p style={{ color: 'red' }}>{error.message}</p>}
     </div>
   );
 };
