@@ -3,7 +3,7 @@ import { useController, Control } from 'react-hook-form';
 import { UserForm } from '../../modules/Form/Form';
 import classes from './CustomSelect.module.css';
 
-interface ChildProps {
+export interface ChildProps {
   name: 'name' | 'birthday' | 'country' | 'agreement' | 'gender' | 'avatar';
   options: { value: string; name: string; id: number }[];
   control: Control<UserForm>;
@@ -20,7 +20,13 @@ const CustomSelect = ({ name, options, control }: ChildProps) => {
       <label className={classes.Label} htmlFor={name}>
         {name}:
       </label>
-      <select className={classes.Input} id={name} onChange={onChange} value={value as string}>
+      <select
+        className={classes.Input}
+        id={name}
+        name={name}
+        onChange={onChange}
+        value={value as string}
+      >
         {options.map((option) => (
           <option key={option.id} value={option.value}>
             {option.name}

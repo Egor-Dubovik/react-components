@@ -10,11 +10,11 @@ const label = {
   variant2: 'test2.0',
 };
 
-// describe('testing CustomRadio', () => {
-//   const inputRef = jest.fn();
+describe('testing CustomRadio', () => {
+  const inputRef = jest.fn();
 
-//   it('check render of CustomRadio', () => {
-//     const { container } = render(<CustomRadio label={label} forwardedRef={inputRef} />);
-//     expect(container).toBeInTheDocument();
-//   });
-// });
+  it('check render of CustomRadio', () => {
+    const { container } = render(<CustomRadio label={label} register={inputRef} />);
+    expect(container).toBeInTheDocument();
+  });
+});
