@@ -34,7 +34,7 @@
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
     "clean": "rd /s /q dist",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "fix": "eslint . --fix",
     "prettier": "prettier src/**/*.ts --write",
     "test": "react-scripts test",
