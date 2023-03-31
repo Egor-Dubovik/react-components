@@ -9,7 +9,7 @@ export const testUser = {
   country: 'belarus',
   agreement: true,
   gender: 'male' as const,
-  avatar: null,
+  avatar: 'avatar.jpg',
 };
 
 describe('testing UserItem', () => {

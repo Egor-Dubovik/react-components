@@ -13,7 +13,7 @@ export interface UserForm {
   country: string;
   agreement: boolean;
   gender: 'male' | 'female';
-  avatar: File | null;
+  avatar: string;
 }
 
 export interface IFormProps {
@@ -30,9 +30,12 @@ const Form: FC<IFormProps> = ({ setUsers }) => {
   } = useForm<UserForm>();
 
   const onSubmit = (data: UserForm) => {
-    console.log(data);
+    const fileList = data.avatar as unknown as FileList;
+    const file = fileList[0];
+    const userData = { ...data, avatar: file.name };
+
     const prevUsers = JSON.parse(storage.get('users')) as UserForm[];
-    const users = prevUsers ? [...prevUsers, data] : [data];
+    const users = prevUsers ? [...prevUsers, userData] : [userData];
     storage.set('users', JSON.stringify(users));
     setUsers(users);
     reset();
