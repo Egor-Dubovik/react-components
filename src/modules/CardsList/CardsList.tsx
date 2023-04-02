@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { ICardsListProps, ICardsListState, IProductCardData } from 'types/cardsList';
 import Card from '../../components/UI/card/Card';
 import classes from './CardsList.module.css';
@@ -10,39 +10,27 @@ const filterProductsByString = ({ productArray, search }: ICardsListState): IPro
   });
 };
 
-class CardsList extends Component<ICardsListProps, ICardsListState> {
-  constructor(props: ICardsListProps) {
-    super(props);
-    this.state = {
-      productArray: props.products,
-      search: '',
-    };
-  }
+const CardsList: FC<ICardsListProps> = ({ products, searchQuery }) => {
+  const [state, setState] = useState<ICardsListState>({
+    productArray: products,
+    search: '',
+  });
 
-  static getDerivedStateFromProps(
-    props: ICardsListProps,
-    state: ICardsListState
-  ): ICardsListState | null {
+  useEffect(() => {
     const filterProducts = filterProductsByString({
-      productArray: props.products,
-      search: props.searchQuery,
+      productArray: products,
+      search: searchQuery,
     });
-    return { search: state.search, productArray: filterProducts };
-  }
+    setState({ productArray: filterProducts, search: searchQuery });
+  }, [products, searchQuery]);
 
-  render() {
-    return (
-      <>
-        <ul className={classes.CardsList}>
-          {this.state.productArray.length > 0
-            ? this.state.productArray.map((product) => (
-                <Card key={product.name} product={product} />
-              ))
-            : 'Nothing found'}
-        </ul>
-      </>
-    );
-  }
-}
+  return (
+    <ul className={classes.CardsList}>
+      {state.productArray.length > 0
+        ? state.productArray.map((product) => <Card key={product.name} product={product} />)
+        : 'Nothing found'}
+    </ul>
+  );
+};
 
 export default CardsList;

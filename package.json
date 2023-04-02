@@ -2,6 +2,7 @@
   "name": "lern-react-ts",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -18,11 +19,10 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.8",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.4"
@@ -30,13 +30,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "clean": "rd /s /q dist",
-    "lint": "eslint . --ext .ts",
-    "fix": "eslint . --fix",
+    "lint": "eslint . --ext .ts,.tsx",
+    "fix": "eslint ./src --fix --color",
     "prettier": "prettier src/**/*.ts --write",
     "test": "react-scripts test",
     "test:covorage": "react-scripts test --coverage --watchAll",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -48,6 +50,17 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx}": [
+      "npm run fix"
     ]
   }
 }

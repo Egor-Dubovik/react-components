@@ -1,9 +1,6 @@
-import React, { Component, useEffect, useState } from 'react';
-import { ISearchProps } from 'types/search';
+import React, { Component } from 'react';
 import Navbar from '../../components/UI/navbar/Navbar';
-import SearchBar from '../../components/searchBar/SearchBar';
 import classes from './Header.module.css';
-import { useLocation } from 'react-router-dom';
 
 class Header extends Component {
   render() {
