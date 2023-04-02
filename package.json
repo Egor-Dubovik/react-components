@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
     "clean": "rd /s /q dist",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .ts,.tsx",
     "fix": "eslint ./src --fix --color",
     "prettier": "prettier src/**/*.ts --write",
     "test": "react-scripts test",
@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0",
     "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0"
