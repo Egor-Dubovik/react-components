@@ -57,6 +57,21 @@ describe('Form', () => {
     expect(checkbox).toBeChecked();
   });
 
+  it('uploads a file', () => {
+    const setState = jest.fn();
+    const { getByTestId } = render(<Form setUsers={setState} />);
+    const file = new File(['test file contents'], 'test.png', {
+      type: 'image/png',
+    });
+
+    const input = getByTestId(/file/i) as HTMLInputElement;
+    fireEvent.change(input, { target: { files: [file] } });
+
+    expect(input).toHaveAttribute('type', 'file');
+    expect(input).toHaveAttribute('accept', '.png,.jpg,.jpeg,.svg');
+    expect(input.files?.[0]).toStrictEqual(file);
+  });
+
   it('check input file error', async () => {
     const { getByText, getByRole } = render(<FormPage />);
 
