@@ -19,8 +19,6 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -35,11 +33,12 @@
     "deploy": "gh-pages -d build",
     "clean": "rd /s /q dist",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "fix": "eslint . --fix",
+    "fix": "eslint ./src --fix --color",
     "prettier": "prettier src/**/*.ts --write",
     "test": "react-scripts test",
     "test:covorage": "react-scripts test --coverage --watchAll",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -54,7 +53,13 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx}": [
+      "npm run fix"
+    ]
   }
 }
