@@ -13,10 +13,10 @@ const MainPage: FC = () => {
   };
 
   return (
-    <>
+    <section className="main-page">
       <SearchBar setSearch={setSearchState} />
-      <CardsList products={cardJson.laptops} searchQuery={state.query}></CardsList>
-    </>
+      <CardsList searchQuery={state.query}></CardsList>
+    </section>
   );
 };
 

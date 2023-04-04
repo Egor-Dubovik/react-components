@@ -1,27 +1,27 @@
 import React, { FC } from 'react';
-import { IProductCardData } from 'types/cardsList';
+import { IPhotosResult } from '../../../types/cardsList';
 import classes from './Cards.module.css';
 
-interface ICardComponent {
-  product: IProductCardData;
+interface ICardProps {
+  photo: IPhotosResult;
 }
 
-const Card: FC<ICardComponent> = ({ product }) => {
+const Card: FC<ICardProps> = ({ photo }) => {
   return (
     <li className={classes.CardWraper}>
       <a href="#" style={{ color: 'black' }}>
         <ul className={classes.Card}>
           <li className={classes.Image}>
-            <img src={process.env.PUBLIC_URL + product.src} alt="laptop image" />
+            <img src={photo.urls.small} alt="photo image" />
           </li>
           <li className={classes.Item}>
-            <h3 style={{ fontWeight: 500 }}>
-              {product.brend} {product.name}
-            </h3>
+            <h3 style={{ fontWeight: 500 }}>Author: {photo.user.username}</h3>
           </li>
-          <li className={classes.Item}>amount: {product.amount} </li>
-          <li className={classes.Item}>{product.details}</li>
-          <li className={classes.Item}>{product.year}</li>
+          <li className={classes.Item}>
+            <h4>description:</h4>
+            <p>{photo.alt_description}</p>
+          </li>
+          <li className={classes.Item}>likes: {photo.likes}</li>
         </ul>
       </a>
     </li>
