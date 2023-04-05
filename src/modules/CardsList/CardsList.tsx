@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { ICardsListProps, IPhotosResult } from 'types/cardsList';
 import { getPhotos, searchPhotos } from '../../services/photo.service';
-import Card from '../../components/card/Card';
+import Card from '../../components/PhotoCard/PhotoCard';
 import classes from './CardsList.module.css';
 import MainLoader from '../../components/loaders/MainLoader/MainLoader';
 

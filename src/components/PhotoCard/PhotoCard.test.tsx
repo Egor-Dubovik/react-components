@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Card from './Card';
+import Card from './PhotoCard';
 
 const photo = {
   alt_description: 'a vase filled with pink flowers next to a laptop',
