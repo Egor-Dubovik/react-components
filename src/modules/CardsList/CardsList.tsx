@@ -3,6 +3,7 @@ import { ICardsListProps, IPhotosResult } from 'types/cardsList';
 import { getPhotos, searchPhotos } from '../../services/photo.service';
 import Card from '../../components/card/Card';
 import classes from './CardsList.module.css';
+import MainLoader from '../../components/loaders/MainLoader/MainLoader';
 
 const CardsList: FC<ICardsListProps> = ({ searchQuery }) => {
   const [photosData, setPhotosData] = useState<IPhotosResult[]>([] as IPhotosResult[]);
@@ -51,7 +52,7 @@ const CardsList: FC<ICardsListProps> = ({ searchQuery }) => {
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <MainLoader />
       ) : (
         <ul className={classes.CardsList}>
           {photosData.length !== 0 ? (
