@@ -21,19 +21,27 @@
   margin-bottom: 10px;
 }
 
-.Image {
-  align-self: center;
+.ImageBox {
   position: relative;
-  width: 70%;
-  padding-bottom: 50%;
+  align-self: center;
+  width: 100%;
+  padding-bottom: 80%;
 }
 
-.Image img {
+.Image {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.Image_visibility {
+  opacity: 0;
+}
+
+.Title {
+  font-weight: 500;
 }
 
 @media (max-width: 992px) {

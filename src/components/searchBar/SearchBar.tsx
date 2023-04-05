@@ -13,16 +13,13 @@ const SearchBar: FC<ISearchProps> = ({ setSearch }) => {
     const inputText = event.currentTarget.value.trim();
 
     inputText !== ''
-      ? setState({ query: query, buttonVisibility: 'visible' })
-      : setState({ query: query, buttonVisibility: 'hidden' });
-
-    setTimeout(() => {
-      setSearch(state);
-    }, 300);
+      ? setState({ query, buttonVisibility: 'visible' })
+      : setState({ query, buttonVisibility: 'hidden' });
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    setSearch(state);
   };
 
   const resetSerch = (): void => {

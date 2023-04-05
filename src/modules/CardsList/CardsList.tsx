@@ -1,19 +1,37 @@
 import React, { FC, useEffect, useState } from 'react';
-import { ICardsListProps, IPhotosData } from 'types/cardsList';
-import Card from '../../components/UI/card/Card';
-import { getPhotos } from '../../services/getPhotos';
+import { ICardsListProps, IPhotosResult } from 'types/cardsList';
+import { getPhotos, searchPhotos } from '../../services/photo.service';
+import Card from '../../components/card/Card';
 import classes from './CardsList.module.css';
 
 const CardsList: FC<ICardsListProps> = ({ searchQuery }) => {
-  const [photosData, setPhotosData] = useState<IPhotosData | null>(null);
+  const [photosData, setPhotosData] = useState<IPhotosResult[]>([] as IPhotosResult[]);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
+  const page = 1;
+  const perPage = 10;
+  const sortTerm = 'latest';
 
-  const fetchPhotos = async () => {
+  const fetchPhotos = async (): Promise<IPhotosResult[]> => {
+    if (searchQuery !== '') {
+      const searchData = await searchPhotos({
+        page,
+        perPage,
+        query: searchQuery,
+        orderBy: sortTerm,
+      });
+      if (searchData.errors) throw new Error(searchData.errors?.join(' '));
+      return searchData.results;
+    }
+    return await getPhotos({ page, perPage, orderBy: sortTerm });
+  };
+
+  const handlefetchPhotos = async (): Promise<void> => {
     try {
+      setPhotosData([] as IPhotosResult[]);
       setLoading(true);
-      const data = await getPhotos({ page: 1, perPage: 10, query: searchQuery, orderBy: 'latest' });
-      setPhotosData(data);
+      const photos = await fetchPhotos();
+      setPhotosData(photos);
     } catch (error) {
       setError(error as Error);
     } finally {
@@ -22,7 +40,8 @@ const CardsList: FC<ICardsListProps> = ({ searchQuery }) => {
   };
 
   useEffect(() => {
-    fetchPhotos();
+    console.log(searchQuery);
+    handlefetchPhotos();
   }, [searchQuery]);
 
   useEffect(() => {
@@ -35,14 +54,14 @@ const CardsList: FC<ICardsListProps> = ({ searchQuery }) => {
         <div>Loading...</div>
       ) : (
         <ul className={classes.CardsList}>
-          {photosData ? (
+          {photosData.length !== 0 ? (
             <>
-              {photosData.results.map((photo) => (
+              {photosData.map((photo) => (
                 <Card key={photo.id} photo={photo} />
               ))}
             </>
           ) : (
-            <p>Error: {error?.message}</p>
+            <p>{error ? `Error: ${error.message}` : 'Nothing found'}</p>
           )}
         </ul>
       )}
