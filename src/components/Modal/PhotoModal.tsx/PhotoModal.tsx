@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { IPhotosResult } from '../../../types/cardsList';
 import Like from '../../Like/Like';
+import Image from '../../Image/Image';
 import classes from './PhotoModal.module.css';
 
 interface IMainModalProps {
@@ -16,7 +17,7 @@ const PhotoModal: FC<IMainModalProps> = ({ isOpen, onClose, photo }) => {
     <div className={classes.overlay} onClick={onClose}>
       <div className={classes.MainModal} onClick={(e) => e.stopPropagation()}>
         <div className={classes.ImageBox}>
-          <img className={classes.Image} src={photo.urls.small} alt="photo image" />
+          <Image src={photo.urls.small} />
         </div>
         <h3 className={classes.Title}>Author: {photo.user.username}</h3>
         <p className={classes.Typography}>
