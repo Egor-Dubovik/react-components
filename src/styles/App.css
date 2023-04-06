@@ -16,6 +16,10 @@
   overflow: hidden;
 }
 
+a {
+  color: #000;
+}
+
 .App {
   position: relative;
   min-height: 100vh;

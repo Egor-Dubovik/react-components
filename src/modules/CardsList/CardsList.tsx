@@ -1,48 +1,73 @@
-import React, { Component } from 'react';
-import { ICardsListProps, ICardsListState, IProductCardData } from 'types/cardsList';
-import Card from '../../components/UI/card/Card';
+import React, { FC, useEffect, useState } from 'react';
+import { ICardsListProps, IPhotosResult } from 'types/cardsList';
+import { getPhotos, searchPhotos } from '../../services/photo.service';
+import Card from '../../components/PhotoCard/PhotoCard';
 import classes from './CardsList.module.css';
+import MainLoader from '../../components/loaders/MainLoader/MainLoader';
 
-const filterProductsByString = ({ productArray, search }: ICardsListState): IProductCardData[] => {
-  return productArray.filter((product) => {
-    const searchQuery = `${product.brend} ${product.name}`;
-    return searchQuery.toLowerCase().includes(search.toLowerCase());
-  });
-};
+const CardsList: FC<ICardsListProps> = ({ searchQuery }) => {
+  const [photosData, setPhotosData] = useState<IPhotosResult[]>([] as IPhotosResult[]);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error | null>(null);
+  const page = 1;
+  const perPage = 10;
+  const sortTerm = 'latest';
 
-class CardsList extends Component<ICardsListProps, ICardsListState> {
-  constructor(props: ICardsListProps) {
-    super(props);
-    this.state = {
-      productArray: props.products,
-      search: '',
-    };
-  }
+  const fetchPhotos = async (): Promise<IPhotosResult[]> => {
+    if (searchQuery !== '') {
+      const searchData = await searchPhotos({
+        page,
+        perPage,
+        query: searchQuery,
+        orderBy: sortTerm,
+      });
+      if (searchData.errors) throw new Error(searchData.errors?.join(' '));
+      return searchData.results;
+    }
+    return await getPhotos({ page, perPage, orderBy: sortTerm });
+  };
 
-  static getDerivedStateFromProps(
-    props: ICardsListProps,
-    state: ICardsListState
-  ): ICardsListState | null {
-    const filterProducts = filterProductsByString({
-      productArray: props.products,
-      search: props.searchQuery,
-    });
-    return { search: state.search, productArray: filterProducts };
-  }
+  const handlefetchPhotos = async (): Promise<void> => {
+    try {
+      setPhotosData([] as IPhotosResult[]);
+      setLoading(true);
+      const photos = await fetchPhotos();
+      setPhotosData(photos);
+    } catch (error) {
+      setError(error as Error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  render() {
-    return (
-      <>
+  useEffect(() => {
+    console.log(searchQuery);
+    handlefetchPhotos();
+  }, [searchQuery]);
+
+  useEffect(() => {
+    console.log(photosData);
+  }, [photosData]);
+
+  return (
+    <>
+      {isLoading ? (
+        <MainLoader />
+      ) : (
         <ul className={classes.CardsList}>
-          {this.state.productArray.length > 0
-            ? this.state.productArray.map((product) => (
-                <Card key={product.name} product={product} />
-              ))
-            : 'Nothing found'}
+          {photosData.length !== 0 ? (
+            <>
+              {photosData.map((photo) => (
+                <Card key={photo.id} photo={photo} />
+              ))}
+            </>
+          ) : (
+            <p>{error ? `Error: ${error.message}` : 'Nothing found'}</p>
+          )}
         </ul>
-      </>
-    );
-  }
-}
+      )}
+    </>
+  );
+};
 
 export default CardsList;

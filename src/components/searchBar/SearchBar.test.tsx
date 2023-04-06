@@ -1,7 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { fireEvent, render } from '@testing-library/react';
 import MainPage from '../../pages/mainPage';
 import { storage } from 'utils/localStorage';
 
@@ -10,13 +9,6 @@ describe('tests for serch', () => {
     const { getByPlaceholderText } = render(<MainPage />);
     const SearchInput = getByPlaceholderText('Search...');
     expect(SearchInput).toBeInTheDocument();
-  });
-
-  it('check search elemtnts', async () => {
-    const { getByPlaceholderText } = render(<MainPage />);
-    const SearchInput = getByPlaceholderText('Search...');
-    userEvent.type(SearchInput, 'acer swift 3x');
-    expect(await screen.findByText(/swift 3x/i)).toBeInTheDocument();
   });
 });
 
