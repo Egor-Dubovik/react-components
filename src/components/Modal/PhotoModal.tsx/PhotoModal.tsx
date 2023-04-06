@@ -14,8 +14,12 @@ const PhotoModal: FC<IMainModalProps> = ({ isOpen, onClose, photo }) => {
   if (!isOpen) return null;
 
   return (
-    <div className={classes.overlay} onClick={onClose}>
-      <div className={classes.MainModal} onClick={(e) => e.stopPropagation()}>
+    <div data-testid="overlay" className={classes.overlay} onClick={onClose}>
+      <div
+        data-testid="photo-modal"
+        className={classes.MainModal}
+        onClick={(event) => event.stopPropagation()}
+      >
         <div className={classes.ImageBox}>
           <Image src={photo.urls.small} />
         </div>
