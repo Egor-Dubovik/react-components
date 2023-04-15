@@ -7,7 +7,7 @@ export interface ButtonProps
 
 export const ResetButton: FC<ButtonProps> = ({ children, ...props }) => {
   return (
-    <button className={classes.ResetButton} {...props}>
+    <button data-testid="reset-button" className={classes.ResetButton} {...props}>
       {children}
     </button>
   );

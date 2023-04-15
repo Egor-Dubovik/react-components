@@ -6,6 +6,13 @@ import { useGetCardListQuery } from './cardsListAPI';
 import { useAppSelector } from '../../../app/hooks/hooks';
 import { selectQuery } from '../searchBar/searchSlice';
 
+interface ApiError {
+  data: {
+    status: number;
+    errors: string[];
+  };
+}
+
 const CardsList: React.FC = () => {
   const search = useAppSelector(selectQuery);
   const page = 1;
@@ -18,14 +25,19 @@ const CardsList: React.FC = () => {
     query: search,
   });
 
+  console.log(data);
+  if (error) {
+    const errorData = (error as ApiError).data;
+    return <p>Error: {errorData.errors}</p>;
+  }
+
   return (
     <>
       {isLoading ? (
         <MainLoader />
       ) : (
         <>
-          <p>{error && `Error: ${error}`}</p>
-          <p>{data?.results && `No results`}</p>
+          <p>{data?.results.length === 0 && `No results`}</p>
           <ul className={classes.CardsList}>
             {data?.results.map((photo) => (
               <Card key={photo.id} photo={photo} />

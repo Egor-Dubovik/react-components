@@ -1,8 +1,7 @@
 import React from 'react';
+import App from './App';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import App from './App';
-
 import userEvent from '@testing-library/user-event';
 
 describe('testing App', () => {
