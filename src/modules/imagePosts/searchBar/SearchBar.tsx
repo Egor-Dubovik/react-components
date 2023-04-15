@@ -1,21 +1,14 @@
 import React, { FC, FormEvent, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks/hooks';
+import { ISearchState, selectQuery, setQuery } from './searchSlice';
 import { ResetButton } from '../../../components/UI/buttons/ResetButton/ResetButton';
 import MyInput from '../../../components/UI/input/MyInput';
 import classes from './SearchBar.module.css';
-import {
-  ISearchState,
-  selectQuery,
-  selectVisibility,
-  setButtonVisibility,
-  setQuery,
-} from './searchSlice';
 
 const SearchBar: FC = () => {
   const search = useAppSelector(selectQuery);
-  const buttonVisibility = useAppSelector(selectVisibility);
   const dispatch = useAppDispatch();
-  const [state, setState] = useState<ISearchState>({ query: search, buttonVisibility });
+  const [state, setState] = useState<ISearchState>({ query: search, buttonVisibility: 'hidden' });
 
   const onInputChange = async (event: FormEvent<HTMLInputElement>): Promise<void> => {
     const query = event.currentTarget.value;
@@ -28,14 +21,16 @@ const SearchBar: FC = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     dispatch(setQuery(state.query));
-    dispatch(setButtonVisibility(state.buttonVisibility));
   };
 
   const resetSerch = (): void => {
     setState({ query: '', buttonVisibility: 'hidden' });
-    dispatch(setQuery(''));
-    dispatch(setButtonVisibility('hidden'));
+    dispatch(setQuery('something'));
   };
+
+  React.useEffect(() => {
+    dispatch(setQuery('something'));
+  }, []);
 
   return (
     <div className={classes.SearchBar}>
