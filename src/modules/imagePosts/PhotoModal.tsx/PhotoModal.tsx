@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { IPhotosResult } from '../../../types/cardsList';
-import Like from '../../Like/Like';
-import Image from '../../Image/Image';
+import { IPhotosResult } from '../../../common/types/cardsList';
+import Like from '../../../components/Like/Like';
+import Image from '../../../components/Image/Image';
 import classes from './PhotoModal.module.css';
 
 interface IMainModalProps {

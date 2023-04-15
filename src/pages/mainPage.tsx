@@ -1,20 +1,12 @@
-import React, { FC, useState } from 'react';
-import SearchBar from 'components/searchBar/SearchBar';
-import CardsList from 'modules/CardsList/CardsList';
-import { ISearch } from 'types/search';
-import { storage } from 'utils/localStorage';
+import React from 'react';
+import SearchBar from 'modules/imagePosts/searchBar/SearchBar';
+import CardsList from 'modules/imagePosts/CardsList/CardsList';
 
-const MainPage: FC = () => {
-  const [state, setState] = useState({ query: storage.get('Search') || '' });
-
-  const setSearchState = (searchState: ISearch): void => {
-    setState(searchState);
-  };
-
+const MainPage = (): JSX.Element => {
   return (
     <section className="main-page">
-      <SearchBar setSearch={setSearchState} />
-      <CardsList searchQuery={state.query}></CardsList>
+      <SearchBar />
+      <CardsList></CardsList>
     </section>
   );
 };

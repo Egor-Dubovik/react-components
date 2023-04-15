@@ -1,5 +1,5 @@
 import { API_URL } from '../common/constants/app';
-import { ISearchPhotosData, IPhotosResult } from '../types/cardsList';
+import { ISearchPhotosData, IPhotosResult } from '../common/types/cardsList';
 import { getData } from './getData';
 
 export type IPhotosOrder = 'latest' | 'oldest' | 'popular';

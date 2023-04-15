@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import PhotoModal from './PhotoModal';
-import { IPhotosResult } from '../../../types/cardsList';
+import { IPhotosResult } from '../../../common/types/cardsList';
 import '@testing-library/jest-dom';
 
 describe('PhotoModal', () => {

@@ -12,7 +12,6 @@ export interface IPhotosResult {
   links?: { self: string; html: string; download: string; download_location: string };
   promoted_at?: null | string;
   sponsorship?: { impression_urls: string[]; tagline: string; tagline_url: string };
-  // topic_submissions: {};
   updated_at?: string;
   urls: { raw?: string; full?: string; regular?: string; small: string; thumb?: string };
   user: { id: string; username: string; first_name: string; bio?: string };
@@ -24,8 +23,4 @@ export interface ISearchPhotosData {
   total_pages: number;
   results: IPhotosResult[];
   errors?: string[];
-}
-
-export interface ICardsListProps {
-  searchQuery: string;
 }

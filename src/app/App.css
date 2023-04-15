@@ -1,5 +1,5 @@
-@import url('./base/nullstyle.css');
-@import url('./base/variables.css');
+@import url('../styles/base/nullstyle.css');
+@import url('../styles/base/variables.css');
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 

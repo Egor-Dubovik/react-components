@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
-import { IPhotosResult } from '../../types/cardsList';
-import Like from '../Like/Like';
-import PhotoModal from '../Modal/PhotoModal.tsx/PhotoModal';
-import Image from '../Image/Image';
+import { IPhotosResult } from '../../../common/types/cardsList';
+import Like from '../../../components/Like/Like';
+import PhotoModal from '../PhotoModal.tsx/PhotoModal';
+import Image from '../../../components/Image/Image';
 import classes from './PhotoCard.module.css';
 
 interface ICardProps {

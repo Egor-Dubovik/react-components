@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { fireEvent, render } from '@testing-library/react';
-import MainPage from '../../pages/mainPage';
+import MainPage from '../../../pages/mainPage';
 import { storage } from 'utils/localStorage';
 
 describe('tests for serch', () => {

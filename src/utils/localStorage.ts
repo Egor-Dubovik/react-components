@@ -1,4 +1,4 @@
-import { IStorage } from 'types/localStorage';
+import { IStorage } from 'common/types/localStorage';
 
 export const storage: IStorage = {
   set: (key, value) => {
