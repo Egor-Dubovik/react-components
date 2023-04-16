@@ -38,7 +38,7 @@
     "fix": "eslint ./src --fix --color",
     "prettier": "prettier src/**/*.ts --write",
     "test": "react-scripts test",
-    "test:covorage": "react-scripts test --coverage --watchAll",
+    "test:coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },

@@ -8,7 +8,7 @@ interface IInputProps {
   value?: string;
 }
 
-function MyInput({ onChange, type, placeholder, value = '' }: IInputProps) {
+const MyInput = ({ onChange, type, placeholder, value = '' }: IInputProps) => {
   return (
     <input
       className={classes.SearchInput}
@@ -18,6 +18,6 @@ function MyInput({ onChange, type, placeholder, value = '' }: IInputProps) {
       value={value}
     />
   );
-}
+};
 
 export default MyInput;

@@ -15,7 +15,11 @@ const Card: FC<ICardProps> = ({ photo }) => {
   return (
     <>
       <PhotoModal photo={photo} isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      <li className={classes.PhotoCardWraper} onClick={() => setIsOpen(true)}>
+      <li
+        data-testid="photo-card"
+        className={classes.PhotoCardWraper}
+        onClick={() => setIsOpen(true)}
+      >
         <a href="/htttps" onClick={(event) => event.preventDefault()}>
           <ul className={classes.PhotoCard}>
             <li className={classes.ImageBox}>

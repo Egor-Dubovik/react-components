@@ -1,9 +1,14 @@
 import React, { FC, FormEvent, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks/hooks';
-import { ISearchState, selectQuery, setQuery } from './searchSlice';
+import { selectQuery, setQuery } from './searchSlice';
 import { ResetButton } from '../../../components/UI/buttons/ResetButton/ResetButton';
 import MyInput from '../../../components/UI/input/MyInput';
 import classes from './SearchBar.module.css';
+
+interface ISearchState {
+  query: string;
+  buttonVisibility: 'hidden' | 'visible';
+}
 
 const SearchBar: FC = () => {
   const search = useAppSelector(selectQuery);
