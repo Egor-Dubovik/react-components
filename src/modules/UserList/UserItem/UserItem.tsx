@@ -1,16 +1,18 @@
 import React, { FC } from 'react';
-import { UserForm } from '../../modules/Form/Form';
+import { UserData } from '../usersSlice';
 import classes from './UserItem.module.css';
 
 interface IUserItem {
-  user: UserForm;
+  user: UserData;
 }
 
 const UserItem: FC<IUserItem> = ({ user }) => {
   return (
     <li className={classes.UserItem}>
       <h3>Full name: {user.name}</h3>
-      <p>Имя файла: {user.avatar}</p>
+      <div className={classes.AvatarBox}>
+        <img className={classes.Avatar} src={user.avatar} alt="avatar" />
+      </div>
       <p>Country: {user.country}</p>
       <p>Birthday: {user.birthday + ''}</p>
       <p>Gender: {user.gender}</p>

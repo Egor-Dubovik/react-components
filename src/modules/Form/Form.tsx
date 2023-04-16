@@ -1,44 +1,30 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useAppDispatch } from '../../app/hooks/hooks';
 import CustomRadio from '../../components/CustomRadio/CustomRadio';
 import CustomSelect from '../../components/CustomSelect/CustomSelect';
 import SubmitButton from '../../components/UI/buttons/SubmitButton/SubmitButton';
 import { countryArray } from '../../data/countries';
-import { storage } from '../../utils/localStorage';
+import { setUser, UserData } from '../UserList/usersSlice';
 import classes from './Form.module.css';
 
-export interface UserForm {
-  name: string;
-  birthday: Date;
-  country: string;
-  agreement: boolean;
-  gender: 'male' | 'female';
-  avatar: string;
-}
-
-export interface IFormProps {
-  setUsers: (users: UserForm[]) => void;
-}
-
-const Form: FC<IFormProps> = ({ setUsers }) => {
+const Form: React.FC = () => {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
     control,
     reset,
     formState: { errors },
-  } = useForm<UserForm>();
+  } = useForm<UserData>();
 
-  const onSubmit = (data: UserForm) => {
-    const fileList = data.avatar as unknown as FileList;
-    const file = fileList[0];
-    const userData = { ...data, avatar: file.name };
-
-    const prevUsers = JSON.parse(storage.get('users')) as UserForm[];
-    const users = prevUsers ? [...prevUsers, userData] : [userData];
-    storage.set('users', JSON.stringify(users));
-    setUsers(users);
-    reset();
+  const onSubmit = (userData: UserData) => {
+    const file = userData.avatar[0] as unknown as File;
+    if (file) {
+      const fileUrl = URL.createObjectURL(file);
+      dispatch(setUser({ ...userData, avatar: fileUrl }));
+      reset();
+    }
   };
 
   return (

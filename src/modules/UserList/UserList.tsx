@@ -1,13 +1,12 @@
-import React, { FC } from 'react';
-import UserItem from '../../components/UserItem/UserItem';
-import { UserForm } from '../Form/Form';
+import React from 'react';
+import { useAppSelector } from '../../app/hooks/hooks';
+import UserItem from './UserItem/UserItem';
 import classes from './UserList.module.css';
+import { selectUsers } from './usersSlice';
 
-interface IUserListProps {
-  users: UserForm[];
-}
+const UserList: React.FC = () => {
+  const users = useAppSelector(selectUsers);
 
-const UserList: FC<IUserListProps> = ({ users }) => {
   return (
     <ul className={classes.UerList}>
       {users?.map((user) => (

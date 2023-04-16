@@ -1,12 +1,12 @@
 import React from 'react';
 import { useController, Control } from 'react-hook-form';
-import { UserForm } from '../../modules/Form/Form';
+import { UserData } from '../../modules/UserList/usersSlice';
 import classes from './CustomSelect.module.css';
 
 export interface ChildProps {
   name: 'name' | 'birthday' | 'country' | 'agreement' | 'gender' | 'avatar';
   options: { value: string; name: string; id: number }[];
-  control: Control<UserForm>;
+  control: Control<UserData>;
 }
 
 const CustomSelect = ({ name, options, control }: ChildProps) => {

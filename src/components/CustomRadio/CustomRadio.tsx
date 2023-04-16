@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { UserForm } from '../../modules/Form/Form';
+import { UserData } from '../../modules/UserList/usersSlice';
 import classes from './CustomRadio.module.css';
 
 interface IProps {
@@ -9,7 +9,7 @@ interface IProps {
     variant1: string;
     variant2: string;
   };
-  register: UseFormRegister<UserForm>;
+  register: UseFormRegister<UserData>;
 }
 
 const CustomRadio: FC<IProps> = ({ label, register }) => {
