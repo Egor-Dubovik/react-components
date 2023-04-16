@@ -1,3 +1,5 @@
+declare module 'redux-mock-store';
+
 declare module '*.css' {
   interface IClassNames {
     [className: string]: string;

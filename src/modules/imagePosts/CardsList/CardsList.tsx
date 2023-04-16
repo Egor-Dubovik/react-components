@@ -25,7 +25,6 @@ const CardsList: React.FC = () => {
     query: search,
   });
 
-  console.log(data);
   if (error) {
     const errorData = (error as ApiError).data;
     return <p>Error: {errorData.errors}</p>;

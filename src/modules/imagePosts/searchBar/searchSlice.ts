@@ -9,7 +9,7 @@ export interface ISearchState {
 }
 
 const initialState: ISearchState = {
-  query: '',
+  query: 'something',
   buttonVisibility: 'hidden',
 };
 

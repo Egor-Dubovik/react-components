@@ -58,7 +58,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.0"
+    "lint-staged": "^13.2.0",
+    "redux-mock-store": "^1.5.4"
   },
   "lint-staged": {
     "src/**/*.{js,ts,jsx,tsx}": [

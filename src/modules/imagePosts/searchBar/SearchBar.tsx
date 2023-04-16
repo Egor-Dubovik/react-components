@@ -8,7 +8,7 @@ import classes from './SearchBar.module.css';
 const SearchBar: FC = () => {
   const search = useAppSelector(selectQuery);
   const dispatch = useAppDispatch();
-  const [state, setState] = useState<ISearchState>({ query: search, buttonVisibility: 'hidden' });
+  const [state, setState] = useState<ISearchState>({ query: search, buttonVisibility: 'visible' });
 
   const onInputChange = async (event: FormEvent<HTMLInputElement>): Promise<void> => {
     const query = event.currentTarget.value;
@@ -25,12 +25,8 @@ const SearchBar: FC = () => {
 
   const resetSerch = (): void => {
     setState({ query: '', buttonVisibility: 'hidden' });
-    dispatch(setQuery('something'));
+    dispatch(setQuery(''));
   };
-
-  React.useEffect(() => {
-    dispatch(setQuery('something'));
-  }, []);
 
   return (
     <div className={classes.SearchBar}>

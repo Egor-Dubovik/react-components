@@ -8,7 +8,7 @@ interface IUserItem {
 
 const UserItem: FC<IUserItem> = ({ user }) => {
   return (
-    <li className={classes.UserItem}>
+    <li data-testid="user-item" className={classes.UserItem}>
       <h3>Full name: {user.name}</h3>
       <div className={classes.AvatarBox}>
         <img className={classes.Avatar} src={user.avatar} alt="avatar" />
