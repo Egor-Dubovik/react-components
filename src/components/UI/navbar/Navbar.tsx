@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Routes } from '../../../common/constants/app';
+import { ROUTES } from '../../../common/constants/app';
 import classes from './Navbar.module.css';
 
 const Navbar = (): JSX.Element => {
@@ -8,19 +8,19 @@ const Navbar = (): JSX.Element => {
     <nav className={classes.Navbar}>
       <NavLink
         className={({ isActive }) => (isActive ? classes.ActiveLink : classes.Link)}
-        to={Routes.main}
+        to={ROUTES.main}
       >
         Home
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? classes.ActiveLink : classes.Link)}
-        to={Routes.form}
+        to={ROUTES.form}
       >
         Form
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? classes.ActiveLink : classes.Link)}
-        to={Routes.about}
+        to={ROUTES.about}
       >
         About Us
       </NavLink>

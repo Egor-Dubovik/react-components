@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import Navbar from './Navbar';
-import { Routes } from '../../../common/constants/app';
+import { ROUTES } from '../../../common/constants/app';
 
 describe('Navbar component', () => {
   test('renders navbar links', () => {
@@ -23,7 +23,7 @@ describe('Navbar component', () => {
 
   test('active link has active class', () => {
     render(
-      <MemoryRouter initialEntries={[Routes.form]}>
+      <MemoryRouter initialEntries={[ROUTES.form]}>
         <Navbar />
       </MemoryRouter>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from 'modules/imagePosts/searchBar/SearchBar';
-import CardsList from 'modules/imagePosts/CardsList/CardsList';
+import CardsList from '../modules/imagePosts/CardsList/CardsList';
+import SearchBar from '../modules/imagePosts/searchBar/SearchBar';
 
 const MainPage = (): JSX.Element => {
   return (
