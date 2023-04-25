@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import PhotoModal from './PhotoModal';
 import { IPhotosResult } from '../../../common/types/cardsList';
 import '@testing-library/jest-dom';
+import { vi } from 'vitest';
 
 describe('PhotoModal', () => {
   const photo: IPhotosResult = {
@@ -17,14 +18,14 @@ describe('PhotoModal', () => {
   };
 
   it('renders the modal when isOpen is true', () => {
-    const closeModal = jest.fn();
+    const closeModal = vi.fn();
     render(<PhotoModal isOpen={true} onClose={closeModal} photo={photo} />);
     const modalElement = screen.getByTestId('photo-modal');
     expect(modalElement).toBeInTheDocument();
   });
 
   it('does not render the modal when isOpen is false', () => {
-    const closeModal = jest.fn();
+    const closeModal = vi.fn();
     let mockIsOpen = true;
     const { rerender } = render(
       <PhotoModal isOpen={mockIsOpen} onClose={closeModal} photo={photo} />
@@ -39,7 +40,7 @@ describe('PhotoModal', () => {
   });
 
   it('calls onClose when the close button or overlay are clicked', () => {
-    const onCloseMock = jest.fn();
+    const onCloseMock = vi.fn();
     render(<PhotoModal isOpen={true} onClose={onCloseMock} photo={photo} />);
     const closeButton = screen.getByRole('button', { name: 'Close' });
     const overlay = screen.getByTestId('overlay');

@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
-
+import { vi } from 'vitest';
 import CustomRadio from './CustomRadio';
 
 const label = {
@@ -11,7 +11,7 @@ const label = {
 };
 
 describe('testing CustomRadio', () => {
-  const inputRef = jest.fn();
+  const inputRef = vi.fn();
 
   it('check render of CustomRadio', () => {
     const { container } = render(<CustomRadio label={label} register={inputRef} />);
