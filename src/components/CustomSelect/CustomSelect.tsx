@@ -13,7 +13,7 @@ const CustomSelect = ({ name, options, control }: ChildProps) => {
   const {
     field: { onChange, value },
     fieldState: { error },
-  } = useController({ name, control, rules: { required: 'Coose a country' } });
+  } = useController({ name, control, rules: { required: 'Choose a country' } });
 
   return (
     <div className={classes.Box}>

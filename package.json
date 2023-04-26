@@ -20,8 +20,8 @@
     "cy:open-unit": "cypress open --component --browser chrome",
     "cy:run-unit": "cypress run --component",
     "cypress:coverage": "npx nyc report --reporter=text-summary",
-    "test:jest": "vitest",
-    "coverage:jest": "vitest --coverage",
+    "test:unit": "vitest",
+    "coverage:unit": "vitest --coverage",
     "prepare": "husky install"
   },
   "dependencies": {

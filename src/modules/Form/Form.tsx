@@ -76,7 +76,7 @@ const Form: React.FC = () => {
         data-testid="file"
         type="file"
         accept=".png,.jpg,.jpeg,.svg"
-        {...register('avatar', { required: 'Choose an file' })}
+        {...register('avatar', { required: 'Choose a file' })}
       />
       {errors.avatar && <p style={{ color: 'red' }}>{errors.avatar.message}</p>}
 
