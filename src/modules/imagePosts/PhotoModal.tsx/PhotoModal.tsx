@@ -38,7 +38,7 @@ const PhotoModal: FC<IMainModalProps> = ({ isOpen, onClose, photo }) => {
         </p>
         <div className={classes.Box} style={{ justifyContent: 'space-between' }}>
           <Like likes={photo.likes} />
-          <button className={classes.CloseButton} onClick={onClose}>
+          <button data-testid="modal-button" className={classes.CloseButton} onClick={onClose}>
             Close
           </button>
         </div>

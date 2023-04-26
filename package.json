@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "server": "npx ts-node --esm server.ts",
     "build": "tsc && vite build",
     "build:client": "vite build --outDir dist/client --ssrManifest",
@@ -13,11 +13,15 @@
     "clean": "rimraf dist/",
     "fix": "eslint . --fix",
     "prettier": "prettier src/**/*.ts --write",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run --env coverage=true",
+    "cy:open-e2e": "cypress open --e2e --browser chrome",
+    "cy:run-e2e": "cypress run --e2e",
+    "cypress:e2e": "cypress run --env coverage=true",
+    "cy:e2e": "start-server-and-test dev http-get://localhost:3000 cy:open-e2e",
+    "cy:open-unit": "cypress open --component --browser chrome",
+    "cy:run-unit": "cypress run --component",
     "cypress:coverage": "npx nyc report --reporter=text-summary",
-    "test": "vitest",
-    "coverage": "vitest --coverage",
+    "test:jest": "vitest",
+    "coverage:jest": "vitest --coverage",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -31,6 +35,8 @@
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.4",
+    "@cypress/react18": "^2.0.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -43,6 +49,7 @@
     "@typescript-eslint/parser": "^5.55.0",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "@vitest/coverage-c8": "^0.29.3",
+    "cypress": "^12.10.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-import-resolver-typescript": "^3.5.3",
@@ -58,15 +65,12 @@
     "prettier": "^2.8.4",
     "redux-mock-store": "^1.5.4",
     "sass": "^1.59.3",
+    "start-server-and-test": "^2.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
+    "vite-plugin-istanbul": "^4.0.1",
     "vitest": "^0.29.3"
-  },
-  "lint-staged": {
-    "src/**/*.{js,ts,jsx,tsx}": [
-      "npm run fix"
-    ]
   },
   "nyc": {
     "reporter": [

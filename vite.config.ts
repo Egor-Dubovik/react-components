@@ -3,10 +3,20 @@
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import istanbul from 'vite-plugin-istanbul';
 
 export default defineConfig(({ mode }) => ({
-  plugins: [react()],
-  server: { port: 3000 },
+  plugins: [
+    react(),
+    istanbul({
+      cypress: true,
+      requireEnv: false,
+    }),
+  ],
+  server: {
+    host: true,
+    port: 3000,
+  },
   build: {
     manifest: false,
     outDir: 'dist',

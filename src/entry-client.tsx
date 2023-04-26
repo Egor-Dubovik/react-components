@@ -15,4 +15,3 @@ hydrateRoot(
     </Provider>
   </React.StrictMode>
 );
-console.log('hydrated');

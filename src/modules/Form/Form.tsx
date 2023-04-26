@@ -28,7 +28,7 @@ const Form: React.FC = () => {
   };
 
   return (
-    <form className={classes.Form} onSubmit={handleSubmit(onSubmit)}>
+    <form id="user-form" className={classes.Form} onSubmit={handleSubmit(onSubmit)}>
       <input
         type="text"
         placeholder="fullname"

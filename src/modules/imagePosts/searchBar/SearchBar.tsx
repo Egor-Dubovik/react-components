@@ -42,7 +42,9 @@ const SearchBar: FC = () => {
           placeholder="Search..."
           value={state.query}
         />
-        <input className={classes.SearchButton} type="submit" />
+        <button className={classes.SearchButton} type="submit">
+          Submit
+        </button>
       </form>
       <ResetButton style={{ visibility: state.buttonVisibility }} onClick={resetSerch} />
     </div>
