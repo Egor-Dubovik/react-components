@@ -1,43 +1,79 @@
 {
-  "name": "week1",
-  "version": "0.1.0",
+  "name": "ssr-react-ts-vite",
+  "author": "Dubovik Egor",
   "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npx ts-node --esm server.ts",
+    "build": "tsc && vite build",
+    "build:client": "vite build --outDir dist/client --ssrManifest",
+    "build:server": "vite build --outDir dist/server --ssr src/entry-server.tsx",
+    "clean": "rimraf dist/",
+    "fix": "eslint . --fix",
+    "prettier": "prettier src/**/*.ts --write",
+    "cy:open-e2e": "cypress open --e2e --browser chrome",
+    "cy:run-e2e": "cypress run --e2e",
+    "cypress:e2e": "cypress run --env coverage=true",
+    "cy:e2e": "start-server-and-test dev http-get://localhost:3000 cy:open-e2e",
+    "cy:open-unit": "cypress open --component --browser chrome",
+    "cy:run-unit": "cypress run --component",
+    "e2e:coverage": "npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary",
+    "test:unit": "vitest",
+    "coverage:unit": "vitest --coverage",
+    "prepare": "husky install"
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
+    "@reduxjs/toolkit": "^1.9.3",
+    "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4"
+    "react-hook-form": "^7.43.8",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.9.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.10.4",
+    "@cypress/react18": "^2.0.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/cypress__code-coverage": "^3.10.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.13",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "@vitest/coverage-c8": "^0.29.3",
+    "cypress": "^12.10.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "jsdom": "^21.1.1",
+    "lint-staged": "^13.2.0",
+    "nodemon": "^2.0.22",
+    "nyc": "^15.1.0",
+    "prettier": "^2.8.4",
+    "redux-mock-store": "^1.5.4",
+    "sass": "^1.59.3",
+    "start-server-and-test": "^2.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vite-plugin-istanbul": "^4.0.1",
+    "vitest": "^0.29.3"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+  "nyc": {
+    "reporter": [
+      "html"
     ]
   }
 }

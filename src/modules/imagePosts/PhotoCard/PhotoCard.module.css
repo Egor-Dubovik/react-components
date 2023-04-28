@@ -1,0 +1,54 @@
+.PhotoCardWraper {
+  flex: 0 0 25%;
+  padding: 0 15px;
+}
+
+.PhotoCard {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 10px;
+  background-color: #ececec;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #ececec;
+  transition: all 0.3s ease;
+}
+
+.PhotoCard:hover {
+  border: 1px solid #00b4cc;
+  transform: scale(1.05);
+}
+
+.PhotoCard li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.ImageBox {
+  position: relative;
+  align-self: center;
+  width: 100%;
+  padding-bottom: 80%;
+}
+
+.Title {
+  font-weight: 500;
+}
+
+@media (max-width: 992px) {
+  .PhotoCardWraper {
+    flex: 0 0 30%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .PhotoCardWraper {
+    flex: 0 0 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .PhotoCardWraper {
+    flex: 0 0 100%;
+  }
+}

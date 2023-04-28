@@ -1,0 +1,41 @@
+.Like {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  column-gap: 15px;
+}
+
+.Heart {
+  position: relative;
+  width: 18px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.Heart:before,
+.Heart:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+  transform-origin: 50% 68%;
+  background-color: #f09d9d;
+  border-radius: 50px 50px 0 0;
+  transition: all 0.1s ease-in;
+}
+.Heart:after {
+  transform: rotate(-45deg);
+}
+
+.Heart:hover:before,
+.Heart:hover:after {
+  background-color: #e04141;
+  /* box-shadow: -11px -12px 5px #0003 inset; */
+}
+
+.Typography {
+  font-size: 18px;
+}
