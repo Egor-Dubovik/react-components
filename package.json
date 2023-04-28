@@ -5,8 +5,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --open",
-    "server": "npx ts-node --esm server.ts",
+    "dev": "npx ts-node --esm server.ts",
     "build": "tsc && vite build",
     "build:client": "vite build --outDir dist/client --ssrManifest",
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.tsx",
@@ -19,7 +18,7 @@
     "cy:e2e": "start-server-and-test dev http-get://localhost:3000 cy:open-e2e",
     "cy:open-unit": "cypress open --component --browser chrome",
     "cy:run-unit": "cypress run --component",
-    "cypress:coverage": "npx nyc report --reporter=text-summary",
+    "e2e:coverage": "npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary",
     "test:unit": "vitest",
     "coverage:unit": "vitest --coverage",
     "prepare": "husky install"

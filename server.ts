@@ -45,7 +45,9 @@ export const createServer = async () => {
     }
   });
 
-  app.listen(PORT, () => console.log(`server start at port: ${PORT}`));
+  app.listen(PORT, () => {
+    return console.log('Server started, click to open -> http://localhost:3000');
+  });
 };
 
 createServer();
